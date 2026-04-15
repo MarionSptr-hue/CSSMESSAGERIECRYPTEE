@@ -1,134 +1,86 @@
-/* ============================================================
-   SYSTÈME DE MESSAGERIE CRYPTÉE (V.3 - FINAL)
-   Design : Terminal Darknet / Anti-compression
-   ============================================================ */
+/* --- MESSAGERIE CRYPTÉE DARKNET --- */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
 
-/* --- 1. L'ENTÊTE (BLOC PARTICIPANTS) --- */
-.cryp-head-container {
-    background: #030303 !important;
+.mess-crypte {
+    background-color: #030303 !important;
+    /* Effet de scanlines (lignes de terminal) */
+    background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                      linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03)) !important;
+    background-size: 100% 3px, 3px 100% !important;
+    
     border: 1px solid #1a1a1a !important;
+    border-left: 3px solid #333 !important; /* Barre latérale de rappel */
     
-    /* On impose la largeur pour contrer la compression du forum */
-    width: 250px !important; 
-    min-width: 250px !important;
-    
-    /* Centrage automatique sans balise <center> */
-    margin: 20px auto !important; 
-    padding: 12px !important;
-    border-radius: 4px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-    
-    /* On réaligne le contenu proprement */
-    display: block !important;
+    color: #a0a0a0 !important;
+    font-family: 'Fira Code', 'Courier New', monospace !important;
+    font-size: 13px !important;
+    padding: 35px 25px 25px 25px !important;
+    margin: 20px auto !important;
+    width: 85% !important;
+    max-width: 650px !important;
+    border-radius: 2px !important;
+    position: relative !important;
     text-align: left !important;
-    box-sizing: border-box !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+}
+
+/* En-tête technique avec icône de verrou */
+.mess-crypte::before {
+    content: "🔒 SECURE_CONNECTION_STATION // ID:098-X";
+    position: absolute;
+    top: 0; left: 0; width: 100%;
+    background: #0a0a0a;
+    color: #444;
+    font-size: 9px;
+    padding: 8px 15px;
+    border-bottom: 1px solid #1a1a1a;
+    letter-spacing: 2px;
+    box-sizing: border-box;
+}
+
+/* Accentuation des noms et des commandes */
+.mess-crypte b, .mess-crypte strong {
+    color: #e0e0e0 !important;
+    font-weight: 600;
+}
+
+/* --- DESIGN DE L'ENTÊTE (PARTICIPANTS) --- */
+.cryp-head-container {
+    background: #050505 !important;
+    border: 1px solid #1a1a1a !important;
+    width: 230px !important;
+    margin: 20px auto !important;
+    padding: 10px !important;
+    border-radius: 0px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
 }
 
 .cryp-participant {
     display: flex !important;
-    flex-direction: row !important;
     align-items: center !important;
-    height: 32px !important;
-    margin-bottom: 4px !important;
-    border-bottom: 1px solid #0d0d0d;
+    height: 35px !important;
+    border-bottom: 1px solid #111;
 }
 
 .cryp-participant img {
-    width: 26px !important;
-    height: 26px !important;
-    margin: 0 10px 0 0 !important;
+    width: 28px !important;
+    height: 28px !important;
+    margin-right: 12px !important;
     border: 1px solid #222;
-    object-fit: cover;
-    filter: grayscale(1);
+    filter: grayscale(1) brightness(0.8);
 }
 
 .cryp-participant span {
-    font-family: 'Fira Code', 'Courier New', monospace !important;
-    font-size: 11px !important;
-    color: #eee !important;
+    font-family: 'Fira Code', monospace !important;
+    font-size: 10px !important;
+    color: #777 !important;
     text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 .cryp-status-line {
-    font-size: 8px;
-    color: #444;
+    font-size: 7px;
+    color: #222;
     text-align: center;
-    margin-top: 10px;
-    font-family: 'Fira Code', monospace;
-    text-transform: uppercase;
+    margin-top: 8px;
     letter-spacing: 2px;
-}
-
-/* --- 2. LE CORPS DU MESSAGE (RÉPONSES [C]) --- */
-.mess-crypte {
-    /* Style global du bloc de réponse */
-    background: #030303 !important;
-    border: 1px solid #1a1a1a !important;
-    color: #b0b0b0 !important;
-    
-    /* Typographie Mono */
-    font-family: 'Fira Code', 'Courier New', monospace !important;
-    font-size: 13px !important;
-    line-height: 1.6 !important;
-    
-    /* On empêche la compression ici aussi */
-    display: block !important;
-    width: 85% !important;
-    max-width: 600px !important;
-    margin: 15px auto !important;
-    padding: 30px 25px 25px 25px !important;
-    border-radius: 4px !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.8) !important;
-    position: relative !important;
-    box-sizing: border-box !important;
-    text-align: left !important;
-}
-
-/* En-tête technique du message crypté */
-.mess-crypte::after {
-    content: ">> E2EE_CHANNEL // STATUS: [SECURED]";
-    display: block;
-    position: absolute;
-    top: 0; left: 0; width: 100%;
-    background: #111;
-    color: #444;
-    font-size: 9px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    padding: 6px 20px;
-    border-bottom: 1px solid #1a1a1a;
-    box-sizing: border-box !important;
-}
-
-/* Style des textes importants à l'intérieur */
-.mess-crypte strong, .mess-crypte b {
-    color: #fff !important;
-    font-weight: 600;
-}
-
-.mess-crypte i, .mess-crypte em {
-    color: #555 !important;
-    font-size: 11px;
-}
-
-/* Animation de Glitch au survol */
-.mess-crypte:hover {
-    animation: crypte-glitch 0.3s ease;
-}
-
-@keyframes crypte-glitch {
-    0% { transform: translate(0); }
-    20% { transform: translate(-1px, 1px); }
-    40% { transform: translate(-1px, -1px); }
-    60% { transform: translate(1px, 1px); }
-    80% { transform: translate(1px, -1px); }
-    100% { transform: translate(0); }
-}
-
-/* Nettoyage des résidus SMS forumactif */
-.mess-crypte:before {
-    content: none !important;
-    display: none !important;
 }
