@@ -2,9 +2,9 @@
 
 /* La classe .mess-crypte est ajoutée par le Javascript */
 .mess-crypte {
-    background: #0a0a0a !important; /* Fond très sombre */
-    border: 1px solid #00ff41 !important; /* Bordure néon */
-    color: #00ff41 !important; /* Texte vert Matrix */
+    background: #222426 !important;
+    border: 1px solid #3f4448 !important;
+    color: #cfd6dc !important;
     font-family: 'Courier New', Courier, monospace !important;
     padding: 20px !important;
     border-radius: 5px !important;
