@@ -1,94 +1,25 @@
-/* Import des polices */
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-
-:root {
-  --sc-bg: #080c09;
-  --sc-header: #0a0e0d;
-  --sc-border: #1f3d2a;
-  --sc-sep: #1a3325;
-  --sc-accent: #00e57a;
-  --sc-dim: #143d20;
-  --sc-text: #b0ffc8;
-}
-
-/* Conteneur Principal */
-.sc-terminal {
-  width: 280px;
-  background: var(--sc-bg);
-  border: 1px solid var(--sc-border);
-  font-family: 'Share Tech Mono', monospace;
-  overflow: hidden;
-  color: var(--sc-dim);
-}
-
-/* En-tête */
-.sc-head {
-  background: var(--sc-header);
-  border-bottom: 1px solid var(--sc-sep);
-  padding: 5px 10px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
+.sc-wrap { font-family: 'Share Tech Mono', Courier, monospace; width: 280px; background: #080c09; border: 1px solid #1f3d2a; overflow: hidden; }
+.sc-titlebar { background: #0a0e0d; border-bottom: 1px solid #1a3325; padding: 5px 10px; display: flex; align-items: center; gap: 5px; }
 .sc-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-.sc-dot.r { background: #3a1a1a; border: 1px solid #6b2020; }
-.sc-dot.y { background: #3a2e0a; border: 1px solid #6b5610; }
-.sc-dot.g { background: #0e2e14; border: 1px solid #1f6b2a; }
+.sc-dot-r { background: #3a1a1a; border: 1px solid #6b2020; }
+.sc-dot-y { background: #3a2e0a; border: 1px solid #6b5610; }
+.sc-dot-g { background: #0e2e14; border: 1px solid #1f6b2a; }
 .sc-title { flex: 1; text-align: center; font-size: 9px; color: #2a5a3a; letter-spacing: 2px; }
-
-/* Corps */
 .sc-body { padding: 10px 12px; }
-.sc-line { font-size: 9px; margin-bottom: 2px; }
-.sc-line.cmd { color: var(--sc-dim); }
-.sc-line.ok { color: var(--sc-accent); }
-
-.sc-hr { border: none; border-top: 1px solid var(--sc-sep); margin: 6px 0; }
-
-.sc-label {
-  font-size: 8px;
-  color: #1f5c30;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  padding: 3px 0;
-  border-bottom: 1px solid var(--sc-sep);
-  margin-bottom: 6px;
-}
-.sc-label b { color: var(--sc-accent); font-weight: normal; }
-
-/* Liste Nodes */
-.sc-node {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 5px 0;
-  border-bottom: 1px solid #0f1f15;
-}
+.sc-cmd { font-size: 9px; color: #143d20; margin-bottom: 2px; }
+.sc-ok { font-size: 9px; color: #00e57a; margin-bottom: 2px; }
+.sc-cmd-last { font-size: 9px; color: #143d20; margin-bottom: 6px; }
+.sc-accent { color: #00e57a; }
+.sc-hr { border-top: 1px solid #1a3325; margin: 6px 0; }
+.sc-section-title { font-size: 8px; color: #1f5c30; letter-spacing: 3px; text-transform: uppercase; padding: 3px 0; border-bottom: 1px solid #1a3325; margin-bottom: 6px; }
+.sc-node { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid #0f1f15; }
 .sc-node:last-of-type { border-bottom: none; }
-
-.sc-avatar { position: relative; flex-shrink: 0; width: 36px; height: 36px; }
-.sc-avatar img {
-  width: 36px; height: 36px; border-radius: 50%; object-fit: cover;
-  border: 1px solid #1f5c30;
-  filter: grayscale(1) brightness(.7) sepia(.3) hue-rotate(100deg);
-}
-.sc-status {
-  position: absolute; bottom: 1px; right: 1px; width: 8px; height: 8px;
-  border-radius: 50%; background: var(--sc-accent); border: 2px solid var(--sc-bg);
-}
-
-.sc-info .name { font-size: 10px; color: var(--sc-text); }
-.sc-info .name b { color: var(--sc-accent); }
-.sc-info .meta { font-size: 8px; color: #1f5c30; margin-top: 1px; }
-.sc-info .key { font-size: 8px; color: var(--sc-sep); margin-top: 1px; }
-.sc-info .key b { color: #0f4a22; }
-
-/* Footer */
-.sc-foot {
-  padding: 5px 12px;
-  border-top: 1px solid var(--sc-sep);
-  font-size: 8px;
-  color: var(--sc-dim);
-  display: flex;
-  justify-content: space-between;
-}
-.sc-foot b { color: var(--sc-accent); font-weight: normal; }
+.sc-avatar-wrap { position: relative; flex-shrink: 0; width: 36px; height: 36px; }
+.sc-avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1px solid #1f5c30; filter: grayscale(1) brightness(.7) sepia(.3) hue-rotate(100deg); }
+.sc-status-dot { position: absolute; bottom: 1px; right: 1px; width: 8px; height: 8px; border-radius: 50%; background: #00e57a; border: 2px solid #080c09; display: block; }
+.sc-name { font-size: 10px; color: #b0ffc8; }
+.sc-info { font-size: 8px; color: #1f5c30; margin-top: 1px; }
+.sc-key { font-size: 8px; color: #1a3325; margin-top: 1px; }
+.sc-key-label { color: #0f4a22; }
+.sc-cursor { font-size: 9px; color: #143d20; }
+.sc-footer { padding: 5px 12px; border-top: 1px solid #1a3325; font-size: 8px; color: #143d20; display: flex; justify-content: space-between; }
