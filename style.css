@@ -1,130 +1,48 @@
-/* ===== CONTAINER ===== */
-.crypt-box {
-  background: linear-gradient(145deg, #2b2b2b, #262626);
-  border: 1px solid #3a3a3a;
-  border-radius: 14px;
-  padding: 18px;
-  color: #d6d6d6;
-  font-family: "Courier New", monospace;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-  position: relative;
+/* --- SYSTEME DE MESSAGERIE CRYPTÉE --- */
+
+/* La classe .mess-crypte est ajoutée par le Javascript */
+.mess-crypte {
+    background: #0a0a0a !important; /* Fond très sombre */
+    border: 1px solid #00ff41 !important; /* Bordure néon */
+    color: #00ff41 !important; /* Texte vert Matrix */
+    font-family: 'Courier New', Courier, monospace !important;
+    padding: 20px !important;
+    border-radius: 5px !important;
+    box-shadow: inset 0 0 15px rgba(0, 255, 65, 0.2), 0 0 10px rgba(0, 0, 0, 0.5) !important;
+    position: relative !important;
+    overflow: hidden;
+    margin: 10px 0 !important;
 }
 
-/* léger effet grain / profondeur */
-.crypt-box::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 20% 10%, rgba(255,255,255,0.03), transparent 40%);
-  pointer-events: none;
+/* Effet de scanline (petites lignes horizontales) */
+.mess-crypte::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
 }
 
-/* ===== HEADER ===== */
-.crypt-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  letter-spacing: 3px;
-  font-size: 13px;
-  text-transform: lowercase;
-  border-bottom: 1px solid #3a3a3a;
-  padding-bottom: 12px;
-  color: #cfcfcf;
+/* En-tête automatique du message crypté */
+.mess-crypte::before {
+    content: ">> ENCRYPTED_CHANNEL // SIGNAL_SECURED";
+    display: block;
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 255, 65, 0.3);
+    padding-bottom: 5px;
+    letter-spacing: 2px;
 }
 
-.crypt-dot {
-  width: 7px;
-  height: 7px;
-  background: #bfbfbf;
-  border-radius: 50%;
-  display: inline-block;
-  margin-right: 10px;
-  opacity: 0.8;
+/* On force le texte à l'intérieur à être vert, même les liens */
+.mess-crypte, .mess-crypte * {
+    color: #00ff41 !important;
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
 }
 
-.crypt-algo {
-  border: 1px solid #555;
-  padding: 3px 10px;
-  border-radius: 8px;
-  font-size: 10px;
-  letter-spacing: 2px;
-  opacity: 0.7;
-}
-
-/* ===== PARTICIPANTS ===== */
-.crypt-participants {
-  margin-top: 18px;
-  font-size: 12px;
-  opacity: 0.8;
-}
-
-.crypt-participants > div:first-child {
-  font-style: italic;
-  opacity: 0.5;
-  margin-bottom: 8px;
-}
-
-.crypt-user {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-  padding: 6px 0;
-}
-
-.crypt-user span:first-child {
-  letter-spacing: 1px;
-}
-
-.crypt-status {
-  width: 6px;
-  height: 6px;
-  background: #bfbfbf;
-  border-radius: 50%;
-  opacity: 0.6;
-}
-
-/* ===== SEPARATOR ===== */
-.crypt-separator {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 11px;
-  letter-spacing: 2px;
-  opacity: 0.4;
-  border-top: 1px solid #3a3a3a;
-  padding-top: 12px;
-}
-
-/* ===== MESSAGES ===== */
-.crypt-msg {
-  background: linear-gradient(145deg, #303030, #2a2a2a);
-  border: 1px solid #3a3a3a;
-  border-radius: 12px;
-  padding: 12px;
-  font-family: "Courier New", monospace;
-  color: #e8e8e8;
-  margin-top: 12px;
-  position: relative;
-  transition: 0.2s ease;
-}
-
-/* petit effet hover subtil */
-.crypt-msg:hover {
-  border-color: #555;
-}
-
-.crypt-meta {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  opacity: 0.5;
-  margin-bottom: 6px;
-  letter-spacing: 1px;
-}
-
-.crypt-status-line {
-  font-size: 10px;
-  opacity: 0.4;
-  margin-top: 6px;
-  letter-spacing: 1px;
+/* On annule les éléments du design SMS qui pourraient gêner */
+.mess-crypte:before, .mess-crypte:after {
+    float: none !important;
 }
