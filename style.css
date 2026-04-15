@@ -1,74 +1,112 @@
 /* ============================================================
-   BUNKER ANTI-BUG FORUMACTIF (V.SOLIDE)
+   SYSTÈME CRYPTÉ : ÉDITION TERMINAL (V.ULTIME)
    ============================================================ */
 
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+
 .cryp-fond {
-  background: #050505 !important;
-  border: 1px solid #1a1a1a !important;
+  background: #030303 !important;
+  border: 1px solid #00ff41 !important; /* Bordure verte néon fine */
   width: 500px !important;
   max-width: 95% !important;
-  padding: 10px 15px !important;
+  padding: 12px 15px !important;
   margin: 20px auto !important;
-  border-radius: 3px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+  border-radius: 2px;
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.1), inset 0 0 10px rgba(0, 0, 0, 1) !important;
   box-sizing: border-box !important;
   display: block !important;
-  line-height: 0 !important; /* TUE LES ESPACES DES <BR> INVISIBLES */
+  line-height: 0 !important;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Supprime les sauts de ligne que le forum injecte tout seul */
-.cryp-fond br {
-  display: none !important;
+/* Effet de scanline (petites lignes de terminal) */
+.cryp-fond::before {
+  content: " ";
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
 }
+
+.cryp-fond br { display: none !important; }
 
 .cryp-table {
   width: 100% !important;
   border-collapse: collapse !important;
-  border: none !important;
   margin: 0 !important;
-  line-height: normal !important; /* Rétablit le texte seulement ici */
+  line-height: normal !important;
+  position: relative;
+  z-index: 2;
 }
 
 .cryp-table td {
-  padding: 8px 0 !important;
-  vertical-align: middle !important; /* CENTRE VERTICALEMENT */
-  border-bottom: 1px solid #111 !important;
-  height: 40px !important;
+  padding: 6px 0 !important;
+  vertical-align: middle !important;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.1) !important;
+  height: 42px !important;
 }
 
-.cryp-table tr:last-child td {
-  border-bottom: none !important;
-}
+.cryp-table tr:last-child td { border-bottom: none !important; }
 
+/* AVATARS RONDS ET LUMINEUX */
 .cryp-ava-img {
-  width: 30px !important;
-  height: 30px !important;
+  width: 32px !important;
+  height: 32px !important;
   border-radius: 50% !important;
-  border: 1px solid #333 !important;
-  filter: grayscale(1) brightness(0.8);
+  border: 1px solid #00ff41 !important;
+  filter: grayscale(0.8) contrast(1.2) brightness(0.8);
   display: block;
   margin: 0 auto !important;
   object-fit: cover;
+  box-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
 }
 
+/* PSEUDOS STYLE "MATRIX" */
 .cryp-pseudo {
-  font-family: 'Courier New', Courier, monospace !important;
+  font-family: 'Fira Code', monospace !important;
   font-size: 11px !important;
   color: #00ff41 !important;
+  text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
   text-transform: uppercase;
-  padding-left: 12px !important;
+  padding-left: 15px !important;
   letter-spacing: 2px;
+  font-weight: 500;
 }
 
-/* --- LE MESSAGE [C] --- */
+/* CODE TECHNO À DROITE */
+.cryp-node {
+  text-align: right;
+  font-family: 'Fira Code', monospace;
+  font-size: 8px !important;
+  color: #004411 !important;
+  width: 100px;
+  letter-spacing: 1px;
+}
+
+/* LE MESSAGE [C] */
 .mess-crypte {
-  background: #050505 !important;
+  background: #030303 !important;
   border: 1px solid #1a1a1a !important;
   border-left: 3px solid #00ff41 !important;
   padding: 20px !important;
-  font-family: 'Courier New', monospace !important;
-  color: #ccc !important;
+  font-family: 'Fira Code', monospace !important;
+  color: #00ff41 !important; /* Texte vert comme un terminal */
+  font-size: 13px !important;
+  line-height: 1.6 !important;
   width: 85% !important;
   margin: 15px auto !important;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) !important;
   display: block !important;
+  text-align: left !important;
+}
+
+.mess-crypte:before {
+  content: "[ DECRYPTING_SECURE_DATA... ]";
+  display: block;
+  font-size: 10px;
+  margin-bottom: 15px;
+  color: #005511;
+  border-bottom: 1px solid #002200;
 }
