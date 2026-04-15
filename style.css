@@ -1,78 +1,70 @@
 /* ============================================================
-   MESSAGERIE CRYPTÉE (V.FINALE - FLEX STRUCTURE)
+   SYSTÈME CRYPTÉ INDESTRUCTIBLE
    ============================================================ */
 
+/* LE CADRE NOIR */
 .cryp-fond {
-  width: 300px !important;
-  max-width: 95% !important;
+  display: block !important;
+  width: 300px !important; /* On force la largeur */
+  min-width: 300px !important;
   background: #050505 !important;
   border: 1px solid #1a1a1a !important;
   padding: 15px !important;
-  border-radius: 5px;
-  margin: 20px auto !important;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  border-radius: 5px !important;
+  margin: 20px auto !important; /* Centrage horizontal */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.8) !important;
   box-sizing: border-box !important;
-  display: block !important; /* Force le bloc à exister */
+  text-align: left !important;
 }
 
+/* LA LIGNE PARTICIPANT (FLEX POUR ÉVITER LES BUGS DE GRILLE) */
 .cryp-item {
   display: flex !important;
   align-items: center !important;
-  margin-bottom: 10px !important;
   height: 40px !important;
+  margin-bottom: 8px !important;
+  border-bottom: 1px solid #111 !important;
   width: 100% !important;
 }
 
-.cryp-item:last-child { margin-bottom: 0 !important; }
-
+/* L'AVATAR */
 .cryp-ava-box {
+  width: 35px !important;
+  height: 35px !important;
+  margin-right: 12px !important;
   position: relative !important;
-  width: 40px !important;
-  height: 40px !important;
-  margin-right: 15px !important;
-  flex-shrink: 0 !important;
 }
 
 .cryp-ava-img {
-  width: 40px !important;
-  height: 40px !important;
+  width: 35px !important;
+  height: 35px !important;
   border-radius: 50% !important;
   object-fit: cover !important;
-  filter: grayscale(1) brightness(0.7);
-  border: 1px solid #222 !important;
+  border: 1px solid #333 !important;
+  filter: grayscale(1) brightness(0.8) !important;
 }
 
-.cryp-online {
-  color: #00ff41 !important;
-  font-size: 10px !important;
-  position: absolute !important;
-  bottom: 0 !important;
-  right: -2px !important;
-  background: #050505 !important;
-  border-radius: 50% !important;
-  border: 2px solid #050505 !important;
-}
-
+/* LE PSEUDO */
 .cryp-pseudo {
-  font-family: 'Courier New', monospace !important;
-  font-size: 12px !important;
-  color: #eee !important;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 11px !important;
+  color: #00ff41 !important; /* Vert terminal pour le look */
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
 }
 
 /* LE MESSAGE [C] */
 .mess-crypte {
   background: #050505 !important;
   border: 1px solid #1a1a1a !important;
+  border-left: 3px solid #00ff41 !important; /* Barre verte sur le côté */
   padding: 20px !important;
-  font-family: 'Courier New', monospace !important;
-  color: #a0a0a0 !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  color: #cccccc !important;
   font-size: 13px !important;
   width: 90% !important;
-  max-width: 550px !important;
+  max-width: 600px !important;
   margin: 15px auto !important;
-  border-left: 3px solid #333 !important;
-  box-sizing: border-box !important;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5) !important;
   display: block !important;
 }
