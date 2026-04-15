@@ -1,189 +1,85 @@
-/*** MESSAGERIE CRYPTÉE ***/
-.cry-wrapper {
-  background:#1e2125;
-  border:1px solid #3a4149;
-  border-radius:6px;
-  overflow:hidden;
-  font-family:'Courier New', Courier, monospace;
-  color:#c8cdd4;
-  max-width:660px;
-  margin:0 auto;
-  box-shadow:var(--shadow);}
+/* ===== CONTAINER ===== */
+.crypt-box {
+  background: #2b2b2b;
+  border: 1px solid #3a3a3a;
+  border-radius: 12px;
+  padding: 15px;
+  color: #d1d1d1;
+  font-family: "Courier New", monospace;
+}
 
-.cry-header {
-  background:#252a2f;
-  border-bottom:1px solid #3a4149;
-  padding:12px 18px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;}
+/* ===== HEADER ===== */
+.crypt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  letter-spacing: 2px;
+  text-transform: lowercase;
+  border-bottom: 1px solid #3a3a3a;
+  padding-bottom: 10px;
+}
 
-.cry-header-left {display:flex;align-items:center;gap:10px;}
+.crypt-dot {
+  width: 8px;
+  height: 8px;
+  background: #bfbfbf;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
 
-.cry-dot {
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:#4a9e6e;
-  animation:cry-pulse 2s infinite;}
+.crypt-algo {
+  border: 1px solid #555;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+}
 
-@keyframes cry-pulse {0%,100%{opacity:1}50%{opacity:.4}}
+/* ===== PARTICIPANTS ===== */
+.crypt-participants {
+  margin-top: 15px;
+  font-size: 13px;
+}
 
-.cry-title {
-  font-size:13px;
-  letter-spacing:3px;
-  color:#c8cdd4;}
+.crypt-user {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
 
-.cry-badge {
-  font-size:10px;
-  letter-spacing:2px;
-  border:1px solid #3a4149;
-  padding:3px 8px;
-  border-radius:3px;
-  color:#6b7785;}
+.crypt-status {
+  width: 6px;
+  height: 6px;
+  background: #bfbfbf;
+  border-radius: 50%;
+}
 
-.cry-participants {
-  background:#252a2f;
-  border-bottom:1px solid #3a4149;
-  padding:10px 18px;}
+/* ===== SEPARATOR ===== */
+.crypt-separator {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.6;
+  border-top: 1px solid #3a3a3a;
+  padding-top: 10px;
+}
 
-.cry-participants-label {
-  font-size:10px;
-  color:#6b7785;
-  letter-spacing:2px;
-  margin-bottom:8px;}
+/* ===== MESSAGES ===== */
+.post:has(.crypt-box) + .post .postbody {
+  background: #2f2f2f;
+  border: 1px solid #3a3a3a;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: "Courier New", monospace;
+  color: #e5e5e5;
+  position: relative;
+}
 
-.cry-user {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:6px 0;}
-
-.cry-user-left {display:flex;align-items:center;gap:10px;}
-
-.cry-avatar {
-  width:32px;
-  height:32px;
-  border-radius:50%;
-  border:1px solid #3a4149;
-  background:#2c3138;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;}
-
-.cry-avatar img {
-  width:32px;
-  height:32px;
-  object-fit:cover;
-  object-position:center;
-  filter:grayscale(1);
-  opacity:.7;}
-
-.cry-pseudo {
-  font-size:12px;
-  color:#c8cdd4;
-  letter-spacing:1px;}
-
-.cry-online {
-  width:6px;
-  height:6px;
-  border-radius:50%;
-  background:#4a9e6e;}
-
-.cry-separator {
-  text-align:center;
-  padding:8px;
-  font-size:10px;
-  color:#6b7785;
-  letter-spacing:3px;
-  border-bottom:1px solid #3a4149;
-  font-family:'Courier New', Courier, monospace;}
-
-.cry-messages {
-  padding:12px 18px;
-  display:flex;
-  flex-direction:column;
-  gap:14px;}
-
-.cry-msg {
-  display:flex;
-  gap:12px;
-  align-items:flex-start;}
-
-.cry-msg-ava {
-  width:30px;
-  height:30px;
-  border-radius:4px;
-  border:1px solid #3a4149;
-  background:#2c3138;
-  overflow:hidden;
-  flex-shrink:0;
-  margin-top:18px;}
-
-.cry-msg-ava img {
-  width:30px;
-  height:30px;
-  object-fit:cover;
-  object-position:center;
-  filter:grayscale(1);
-  opacity:.7;}
-
-.cry-msg-body {flex:1;}
-
-.cry-msg-meta {
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:5px;}
-
-.cry-msg-pseudo {
-  font-size:11px;
-  letter-spacing:1px;
-  color:#c8cdd4;}
-
-.cry-msg-time {
-  font-size:10px;
-  color:#6b7785;}
-
-.cry-reply {
-  background:#1e2125;
-  border-left:1px solid #3a4149;
-  border-right:1px solid #3a4149;
-  border-bottom:1px solid #3a4149;
-  max-width:660px;
-  margin:0 auto;
-  font-family:'Courier New', Courier, monospace;}
-
-.cry-bubble {
-  background:#2c3138;
-  border:1px solid #3a4149;
-  border-radius:4px;
-  padding:10px 14px;}
-
-.cry-bubble-text {
-  font-size:12px;
-  color:#c8cdd4;
-  line-height:1.6;
-  margin-bottom:8px;
-  font-family:'Courier New', Courier, monospace;}
-
-.cry-bubble-footer {
-  display:flex;
-  align-items:center;
-  gap:6px;
-  border-top:1px solid #3a4149;
-  padding-top:5px;
-  margin-top:5px;}
-
-.cry-status-icon, .cry-status-label {
-  font-size:10px;
-  color:#6b7785;
-  letter-spacing:1px;}
-
-.cry-checks {color:#4a9e6e;font-size:10px;}
-
-.cry-arrow {
-  color:#6b7785;
-  font-size:11px;
-  margin-top:20px;
-  flex-shrink:0;}
+/* pseudo + heure */
+.post:has(.crypt-box) + .post .postbody::before {
+  content: attr(data-author) "    " attr(data-time);
+  display: block;
+  font-size: 11px;
+  opacity: 0.5;
+  margin-bottom: 5px;
+}
