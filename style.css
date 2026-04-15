@@ -1,12 +1,19 @@
-/* --- LE CONTENEUR NOIR (LARGEUR FIXE) --- */
+/* ============================================================
+   SYSTÈME CRYPTÉ : VERSION LARGE & FINE (ANTI-COMPRESSION)
+   ============================================================ */
+
+/* --- LE CONTENEUR NOIR --- */
 .cryp-fond {
   background: #050505 !important;
   border: 1px solid #1a1a1a !important;
-  width: 300px !important;
-  padding: 15px !important;
+  width: 500px !important; /* Largeur confortable */
+  max-width: 95% !important; /* Sécurité mobile */
+  padding: 8px 15px !important; /* Très peu de padding pour l'effet "fin" */
   margin: 20px auto !important;
-  border-radius: 5px;
+  border-radius: 3px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+  box-sizing: border-box !important;
+  display: block !important;
 }
 
 /* --- LE TABLEAU DE STRUCTURE --- */
@@ -14,37 +21,47 @@
   width: 100% !important;
   border-collapse: collapse !important;
   border: none !important;
+  table-layout: fixed !important; /* Force le respect des largeurs */
 }
 
 .cryp-table td {
   padding: 5px 0 !important;
   vertical-align: middle !important;
   border-bottom: 1px solid #111 !important;
+  height: 35px !important; /* Hauteur réduite */
 }
 
-/* --- L'AVATAR --- */
+.cryp-table tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* --- L'AVATAR (PETIT ET ROND) --- */
 .cryp-ava-img {
-  width: 35px !important;
-  height: 35px !important;
-  min-width: 35px !important;
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
   border-radius: 50% !important;
   border: 1px solid #333 !important;
   filter: grayscale(1) brightness(0.8);
   display: block;
   object-fit: cover;
+  margin: 0 auto;
 }
 
 /* --- LE PSEUDO --- */
 .cryp-pseudo {
   font-family: 'Courier New', Courier, monospace !important;
   font-size: 11px !important;
-  color: #00ff41 !important; /* Vert Terminal */
+  color: #00ff41 !important; /* Vert terminal */
   text-transform: uppercase;
-  padding-left: 15px !important;
-  letter-spacing: 1px;
+  padding-left: 10px !important;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* --- LE MESSAGE [C] --- */
+/* --- LE MESSAGE [C] (RÉPONSES) --- */
 .mess-crypte {
   background: #050505 !important;
   border: 1px solid #1a1a1a !important;
@@ -53,8 +70,22 @@
   font-family: 'Courier New', Courier, monospace !important;
   color: #cccccc !important;
   font-size: 13px !important;
-  width: 80% !important;
+  line-height: 1.5 !important;
+  width: 90% !important;
+  max-width: 600px !important;
   margin: 15px auto !important;
   display: block !important;
   text-align: left !important;
+  box-sizing: border-box !important;
+}
+
+/* Header automatique pour le message [C] */
+.mess-crypte:before {
+  content: ">> DECRYPTED_DATA_RECEIVED";
+  display: block;
+  font-size: 9px;
+  color: #333;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  border-bottom: 1px solid #111;
 }
