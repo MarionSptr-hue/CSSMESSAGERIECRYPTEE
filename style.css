@@ -1,165 +1,134 @@
 /* ============================================================
-   CANAL DE CONVERSATION CHIFFRÉ (E2EE TERMINAL)
-   Look "Darknet" Radical & Réaliste
+   SYSTÈME DE MESSAGERIE CRYPTÉE (V.3 - FINAL)
+   Design : Terminal Darknet / Anti-compression
    ============================================================ */
 
-/* Importation d'une police Mono technique pour plus de réalisme */
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
+/* --- 1. L'ENTÊTE (BLOC PARTICIPANTS) --- */
+.cryp-head-container {
+    background: #030303 !important;
+    border: 1px solid #1a1a1a !important;
+    
+    /* On impose la largeur pour contrer la compression du forum */
+    width: 250px !important; 
+    min-width: 250px !important;
+    
+    /* Centrage automatique sans balise <center> */
+    margin: 20px auto !important; 
+    padding: 12px !important;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    
+    /* On réaligne le contenu proprement */
+    display: block !important;
+    text-align: left !important;
+    box-sizing: border-box !important;
+}
 
+.cryp-participant {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    height: 32px !important;
+    margin-bottom: 4px !important;
+    border-bottom: 1px solid #0d0d0d;
+}
+
+.cryp-participant img {
+    width: 26px !important;
+    height: 26px !important;
+    margin: 0 10px 0 0 !important;
+    border: 1px solid #222;
+    object-fit: cover;
+    filter: grayscale(1);
+}
+
+.cryp-participant span {
+    font-family: 'Fira Code', 'Courier New', monospace !important;
+    font-size: 11px !important;
+    color: #eee !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cryp-status-line {
+    font-size: 8px;
+    color: #444;
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Fira Code', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- 2. LE CORPS DU MESSAGE (RÉPONSES [C]) --- */
 .mess-crypte {
-    /* --- VARIABLES LOCALES (Force l'esthétique Dark) --- */
-    --cryp-bg: #030303;               /* Noir Profond */
-    --cryp-text: #b0b0b0;             /* Gris Acier Froid */
-    --cryp-accent: #00ff41;           /* Vert Phosphore Matrix */
-    --cryp-meta: #404040;              /* Gris Sombre (Métadonnées) */
-    --cryp-border-color: #1a1a1a;     /* Bordure très sombre */
+    /* Style global du bloc de réponse */
+    background: #030303 !important;
+    border: 1px solid #1a1a1a !important;
+    color: #b0b0b0 !important;
     
-    /* --- STRUCTURE DU TERMINAL --- */
-    background: var(--cryp-bg) !important;
-    color: var(--cryp-text) !important;
-    
-    /* Typographie Mono Strict */
-    font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace !important;
+    /* Typographie Mono */
+    font-family: 'Fira Code', 'Courier New', monospace !important;
     font-size: 13px !important;
     line-height: 1.6 !important;
-    letter-spacing: -0.2px;
     
-    /* Espacement et Forme */
+    /* On empêche la compression ici aussi */
+    display: block !important;
+    width: 85% !important;
+    max-width: 600px !important;
+    margin: 15px auto !important;
     padding: 30px 25px 25px 25px !important;
-    margin: 25px auto !important;
-    max-width: 80%;
-    border-radius: var(--radius-normal) !important; /* Garde une liaison subtile avec le forum */
-    position: relative !important;
-    overflow: hidden;
-    
-    /* Bordure Technique Segmentée */
-    border: 1px solid var(--cryp-border-color) !important;
+    border-radius: 4px !important;
     box-shadow: 0 4px 15px rgba(0,0,0,0.8) !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
 }
 
-/* --- EFFET DE SCANLINES (LIGNES DE BALAYAGE) --- */
-.mess-crypte::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.02) 50%);
-    background-size: 100% 4px;
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* --- EN-TÊTE TECHNIQUE DU CANAL --- */
+/* En-tête technique du message crypté */
 .mess-crypte::after {
-    content: ">> E2EE_CHANNEL // STATUS: [SECURED] // CHIPHER: AES-GCM-256";
+    content: ">> E2EE_CHANNEL // STATUS: [SECURED]";
     display: block;
     position: absolute;
     top: 0; left: 0; width: 100%;
-    background: var(--cryp-border-color);
-    color: var(--cryp-meta);
+    background: #111;
+    color: #444;
     font-size: 9px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     padding: 6px 20px;
     border-bottom: 1px solid #1a1a1a;
+    box-sizing: border-box !important;
 }
 
-/* --- STRUCTURE DES ÉLÉMENTS INTERNES --- */
-.mess-crypte strong, 
-.mess-crypte b {
-    color: var(--white) !important; /* Blanc Pur pour les noms */
+/* Style des textes importants à l'intérieur */
+.mess-crypte strong, .mess-crypte b {
+    color: #fff !important;
     font-weight: 600;
 }
 
-.mess-crypte i, 
-.mess-crypte em {
-    color: var(--cryp-meta) !important; /* Gris Sombre pour le hors-rp/métadonnées */
+.mess-crypte i, .mess-crypte em {
+    color: #555 !important;
     font-size: 11px;
 }
 
-.mess-crypte a {
-    color: var(--cryp-accent) !important;
-    text-decoration: none !important;
-    border-bottom: 1px dashed var(--cryp-accent);
-    transition: all 0.3s ease;
-}
-
-.mess-crypte a:hover {
-    color: var(--white) !important;
-    border-bottom: 1px solid var(--white);
-}
-
-/* --- NETTOYAGE DES RÉSIDUS SMS --- */
-.mess-crypte:before, 
-.mess-crypte:after {
-    float: none !important;
-}
-
-/* --- ANIMATION DE GLITCH AU SURVOL (Réalisme Connexion) --- */
+/* Animation de Glitch au survol */
 .mess-crypte:hover {
     animation: crypte-glitch 0.3s ease;
 }
 
-/* --- RESET ET COMPRESSION POUR L'ENTETE --- */
-.cryp-head-container {
-    background: #030303 !important;
-    border: 1px solid #1a1a1a !important;
-    display: inline-block !important;
-    padding: 10px !important;
-    width: 200px !important; /* Largeur mini */
-    border-radius: 3px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    margin-top: 20px;
-}
-
-.cryp-participant {
-    /* On force le flex pour annuler le grid du forumactif */
-    display: flex !important; 
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    
-    /* On annule les marges forcées par ton CSS sms.css */
-    margin: 4px 0 !important; 
-    height: 28px !important; 
-    width: 100% !important;
-    float: none !important;
-}
-
-.cryp-participant img {
-    width: 24px !important;
-    height: 24px !important;
-    margin: 0 8px 0 0 !important; /* Espace à droite de l'image */
-    border: 1px solid #333;
-    filter: grayscale(1);
-    object-fit: cover;
-    display: block !important;
-}
-
-.cryp-participant span {
-    font-family: 'Fira Code', monospace !important;
-    font-size: 10px !important;
-    color: #fff !important;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    line-height: normal !important;
-}
-
-.cryp-status-line {
-    font-size: 7px;
-    color: #333;
-    text-align: center;
-    border-top: 1px solid #141414;
-    margin-top: 8px;
-    padding-top: 4px;
-    font-family: 'Fira Code', monospace;
-}
-
 @keyframes crypte-glitch {
     0% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
+    20% { transform: translate(-1px, 1px); }
+    40% { transform: translate(-1px, -1px); }
+    60% { transform: translate(1px, 1px); }
+    80% { transform: translate(1px, -1px); }
     100% { transform: translate(0); }
+}
+
+/* Nettoyage des résidus SMS forumactif */
+.mess-crypte:before {
+    content: none !important;
+    display: none !important;
 }
