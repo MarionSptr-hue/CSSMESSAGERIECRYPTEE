@@ -1,66 +1,72 @@
 /* ============================================================
-   SYSTÈME DE MESSAGERIE CRYPTÉE (DYNAMIQUE)
-   Ce code s'adapte automatiquement aux couleurs du forum
+   SYSTÈME DE MESSAGERIE CRYPTÉE (EFFET TERMINAL NÉON)
+   Ce code s'adapte aux fonds du forum mais garde son look.
    ============================================================ */
 
 .mess-crypte {
-    /* Fond et Bordures basés sur tes variables */
-    background: var(--neutralDarker) !important; 
-    border: 1px solid var(--accentClr) !important;
-    color: var(--textColor) !important;
+    /* Fond basé sur tes variables (s'adapte au mode clair/sombre) */
+    background-color: var(--neutralDarker) !important; 
+    border: 2px solid #00ffff !important; /* Bordure Cyan Néon fixe */
     
-    /* Typographie style "Terminal" */
-    font-family: 'Courier New', Courier, monospace !important;
-    font-size: var(--normal-size) !important;
-    line-height: 1.6 !important;
+    /* EFFET TEXTE NÉON PHOSPHORESCENT (Forcé pour le look) */
+    color: #00ffff !important; /* Couleur Cyan Néon de base */
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff !important; /* Halo lumineux */
+    
+    /* Typographie style "Terminal Old School" */
+    font-family: 'VT323', 'Courier New', monospace !important; /* Police pixel si possible */
+    font-size: 1.1em !important; /* Un peu plus grand pour la lisibilité */
+    line-height: 1.5 !important;
     
     /* Structure et Espacement */
-    padding: 20px !important;
-    margin: 15px auto !important;
-    max-width: 90%;
-    border-radius: var(--radius-normal) !important;
-    box-shadow: var(--shadowBox) !important;
+    padding: 25px !important;
+    margin: 20px auto !important;
+    max-width: 85%;
+    border-radius: 0px !important; /* Bords carrés pour le look machine */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3) !important; /* Ombre portée cyan */
+    
     position: relative !important;
     overflow: hidden;
 }
 
-/* En-tête du message crypté */
+/* En-tête du message crypté avec effet clignotant */
 .mess-crypte::before {
-    content: ">> E2EE_SIGNAL_CONNECTED // UNREDACTED";
+    content: ">>> SYNC_ESTABLISHED // E2EE_ACTIVE";
     display: block;
-    font-size: var(--mini-size);
+    font-size: 0.8em;
     font-weight: bold;
-    color: var(--accentClr);
+    color: #00ffff;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 12px;
-    border-bottom: var(--border);
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.5);
     padding-bottom: 8px;
-    opacity: 0.8;
+    opacity: 0.9;
+    animation: crypte-blink 2s infinite; /* Petit clignotement */
 }
 
-/* Décoration : Petit point de statut clignotant */
+/* Décoration : Petit point de statut et "SCANNING" */
 .mess-crypte::after {
-    content: "● SECURED";
+    content: "● SCANNING_MESSAGES_...";
     position: absolute;
     bottom: 8px;
     right: 15px;
-    font-size: 9px;
-    color: var(--sd); /* Utilise ton vert de groupe "sd" */
+    font-size: 0.7em;
+    color: #00ffff;
     text-transform: uppercase;
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
-/* Style des liens et gras à l'intérieur */
+/* Style des liens et gras à l'intérieur : effet "surbrillance" */
 .mess-crypte strong, 
 .mess-crypte b {
-    color: var(--accentClrDark) !important;
-    text-shadow: 0 0 1px var(--accentLight);
+    color: #ffffff !important; /* Blanc pur pour le gras */
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #00ffff !important;
 }
 
 .mess-crypte a {
-    color: var(--one) !important;
+    color: #00ffff !important;
     text-decoration: underline !important;
+    opacity: 0.8;
 }
 
 /* Nettoyage des résidus du système SMS classique */
