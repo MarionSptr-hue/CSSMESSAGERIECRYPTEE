@@ -1,76 +1,110 @@
 /* ============================================================
-   SYSTÈME DE MESSAGERIE CRYPTÉE (EFFET TERMINAL NÉON)
-   Ce code s'adapte aux fonds du forum mais garde son look.
+   CANAL DE CONVERSATION CHIFFRÉ (E2EE TERMINAL)
+   Look "Darknet" Radical & Réaliste
    ============================================================ */
 
+/* Importation d'une police Mono technique pour plus de réalisme */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
+
 .mess-crypte {
-    /* Fond basé sur tes variables (s'adapte au mode clair/sombre) */
-    background-color: var(--neutralDarker) !important; 
-    border: 2px solid #00ffff !important; /* Bordure Cyan Néon fixe */
+    /* --- VARIABLES LOCALES (Force l'esthétique Dark) --- */
+    --cryp-bg: #030303;               /* Noir Profond */
+    --cryp-text: #b0b0b0;             /* Gris Acier Froid */
+    --cryp-accent: #00ff41;           /* Vert Phosphore Matrix */
+    --cryp-meta: #404040;              /* Gris Sombre (Métadonnées) */
+    --cryp-border-color: #1a1a1a;     /* Bordure très sombre */
     
-    /* EFFET TEXTE NÉON PHOSPHORESCENT (Forcé pour le look) */
-    color: #00ffff !important; /* Couleur Cyan Néon de base */
-    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff !important; /* Halo lumineux */
+    /* --- STRUCTURE DU TERMINAL --- */
+    background: var(--cryp-bg) !important;
+    color: var(--cryp-text) !important;
     
-    /* Typographie style "Terminal Old School" */
-    font-family: 'VT323', 'Courier New', monospace !important; /* Police pixel si possible */
-    font-size: 1.1em !important; /* Un peu plus grand pour la lisibilité */
-    line-height: 1.5 !important;
+    /* Typographie Mono Strict */
+    font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace !important;
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    letter-spacing: -0.2px;
     
-    /* Structure et Espacement */
-    padding: 25px !important;
-    margin: 20px auto !important;
-    max-width: 85%;
-    border-radius: 0px !important; /* Bords carrés pour le look machine */
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3) !important; /* Ombre portée cyan */
-    
+    /* Espacement et Forme */
+    padding: 30px 25px 25px 25px !important;
+    margin: 25px auto !important;
+    max-width: 80%;
+    border-radius: var(--radius-normal) !important; /* Garde une liaison subtile avec le forum */
     position: relative !important;
     overflow: hidden;
+    
+    /* Bordure Technique Segmentée */
+    border: 1px solid var(--cryp-border-color) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.8) !important;
 }
 
-/* En-tête du message crypté avec effet clignotant */
+/* --- EFFET DE SCANLINES (LIGNES DE BALAYAGE) --- */
 .mess-crypte::before {
-    content: ">>> SYNC_ESTABLISHED // E2EE_ACTIVE";
-    display: block;
-    font-size: 0.8em;
-    font-weight: bold;
-    color: #00ffff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid rgba(0, 255, 255, 0.5);
-    padding-bottom: 8px;
-    opacity: 0.9;
-    animation: crypte-blink 2s infinite; /* Petit clignotement */
-}
-
-/* Décoration : Petit point de statut et "SCANNING" */
-.mess-crypte::after {
-    content: "● SCANNING_MESSAGES_...";
+    content: "";
     position: absolute;
-    bottom: 8px;
-    right: 15px;
-    font-size: 0.7em;
-    color: #00ffff;
-    text-transform: uppercase;
-    opacity: 0.5;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.02) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1;
 }
 
-/* Style des liens et gras à l'intérieur : effet "surbrillance" */
+/* --- EN-TÊTE TECHNIQUE DU CANAL --- */
+.mess-crypte::after {
+    content: ">> E2EE_CHANNEL // STATUS: [SECURED] // CHIPHER: AES-GCM-256";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; width: 100%;
+    background: var(--cryp-border-color);
+    color: var(--cryp-meta);
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 6px 20px;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+/* --- STRUCTURE DES ÉLÉMENTS INTERNES --- */
 .mess-crypte strong, 
 .mess-crypte b {
-    color: #ffffff !important; /* Blanc pur pour le gras */
-    text-shadow: 0 0 5px #ffffff, 0 0 10px #00ffff !important;
+    color: var(--white) !important; /* Blanc Pur pour les noms */
+    font-weight: 600;
+}
+
+.mess-crypte i, 
+.mess-crypte em {
+    color: var(--cryp-meta) !important; /* Gris Sombre pour le hors-rp/métadonnées */
+    font-size: 11px;
 }
 
 .mess-crypte a {
-    color: #00ffff !important;
-    text-decoration: underline !important;
-    opacity: 0.8;
+    color: var(--cryp-accent) !important;
+    text-decoration: none !important;
+    border-bottom: 1px dashed var(--cryp-accent);
+    transition: all 0.3s ease;
 }
 
-/* Nettoyage des résidus du système SMS classique */
+.mess-crypte a:hover {
+    color: var(--white) !important;
+    border-bottom: 1px solid var(--white);
+}
+
+/* --- NETTOYAGE DES RÉSIDUS SMS --- */
 .mess-crypte:before, 
 .mess-crypte:after {
     float: none !important;
+}
+
+/* --- ANIMATION DE GLITCH AU SURVOL (Réalisme Connexion) --- */
+.mess-crypte:hover {
+    animation: crypte-glitch 0.3s ease;
+}
+
+@keyframes crypte-glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
 }
