@@ -45,22 +45,36 @@
 }
 
 /* --- ENTÊTE ÉLARGIE ET FIXÉE --- */
+/* --- ENTÊTE RESPONSIVE ET ÉLARGIE --- */
 .cryp-head-container {
     background: #050505 !important;
     border: 1px solid #1a1a1a !important;
     
-    /* On élargit ici */
+    /* On définit une largeur idéale */
     width: 350px !important; 
-    max-width: 95% !important; /* Sécurité mobile */
+    /* MAIS on lui dit de ne jamais dépasser 90% de la largeur de l'écran */
+    max-width: 90% !important; 
     
-    /* On force le centrage sans compression */
     margin: 20px auto !important; 
-    display: table !important; /* "table" aide souvent à garder la largeur propre sur Forumactif */
-    
+    display: block !important; /* Retour au block pour le responsive */
     padding: 15px 20px !important;
     border-radius: 2px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.6);
     box-sizing: border-box !important;
+}
+
+/* On s'assure que les pseudos ne cassent pas tout sur mobile */
+.cryp-participant span {
+    font-family: 'Fira Code', monospace !important;
+    font-size: 11px !important;
+    color: #999 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* Si le pseudo est trop long sur petit écran, on met des points de suspension */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap !important; 
 }
 
 .cryp-participant {
