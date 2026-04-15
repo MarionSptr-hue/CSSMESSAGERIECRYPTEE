@@ -1,48 +1,70 @@
-/* --- SYSTEME DE MESSAGERIE CRYPTÉE --- */
+/* ============================================================
+   SYSTÈME DE MESSAGERIE CRYPTÉE (DYNAMIQUE)
+   Ce code s'adapte automatiquement aux couleurs du forum
+   ============================================================ */
 
-/* La classe .mess-crypte est ajoutée par le Javascript */
 .mess-crypte {
-    background: #222426 !important;
-    border: 1px solid #3f4448 !important;
-    color: #cfd6dc !important;
+    /* Fond et Bordures basés sur tes variables */
+    background: var(--neutralDarker) !important; 
+    border: 1px solid var(--accentClr) !important;
+    color: var(--textColor) !important;
+    
+    /* Typographie style "Terminal" */
     font-family: 'Courier New', Courier, monospace !important;
+    font-size: var(--normal-size) !important;
+    line-height: 1.6 !important;
+    
+    /* Structure et Espacement */
     padding: 20px !important;
-    border-radius: 5px !important;
-    box-shadow: inset 0 0 15px rgba(0, 255, 65, 0.2), 0 0 10px rgba(0, 0, 0, 0.5) !important;
+    margin: 15px auto !important;
+    max-width: 90%;
+    border-radius: var(--radius-normal) !important;
+    box-shadow: var(--shadowBox) !important;
     position: relative !important;
     overflow: hidden;
-    margin: 10px 0 !important;
 }
 
-/* Effet de scanline (petites lignes horizontales) */
-.mess-crypte::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
-    background-size: 100% 4px;
-    pointer-events: none;
-}
-
-/* En-tête automatique du message crypté */
+/* En-tête du message crypté */
 .mess-crypte::before {
-    content: ">> ENCRYPTED_CHANNEL // SIGNAL_SECURED";
+    content: ">> E2EE_SIGNAL_CONNECTED // UNREDACTED";
     display: block;
-    font-size: 10px;
+    font-size: var(--mini-size);
     font-weight: bold;
-    margin-bottom: 15px;
-    border-bottom: 1px solid rgba(0, 255, 65, 0.3);
-    padding-bottom: 5px;
+    color: var(--accentClr);
+    text-transform: uppercase;
     letter-spacing: 2px;
+    margin-bottom: 12px;
+    border-bottom: var(--border);
+    padding-bottom: 8px;
+    opacity: 0.8;
 }
 
-/* On force le texte à l'intérieur à être vert, même les liens */
-.mess-crypte, .mess-crypte * {
-    color: #00ff41 !important;
-    text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+/* Décoration : Petit point de statut clignotant */
+.mess-crypte::after {
+    content: "● SECURED";
+    position: absolute;
+    bottom: 8px;
+    right: 15px;
+    font-size: 9px;
+    color: var(--sd); /* Utilise ton vert de groupe "sd" */
+    text-transform: uppercase;
+    opacity: 0.6;
 }
 
-/* On annule les éléments du design SMS qui pourraient gêner */
-.mess-crypte:before, .mess-crypte:after {
+/* Style des liens et gras à l'intérieur */
+.mess-crypte strong, 
+.mess-crypte b {
+    color: var(--accentClrDark) !important;
+    text-shadow: 0 0 1px var(--accentLight);
+}
+
+.mess-crypte a {
+    color: var(--one) !important;
+    text-decoration: underline !important;
+}
+
+/* Nettoyage des résidus du système SMS classique */
+.mess-crypte:before, 
+.mess-crypte:after {
     float: none !important;
 }
