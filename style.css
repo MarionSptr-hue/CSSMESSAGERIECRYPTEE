@@ -1,84 +1,78 @@
 /* ============================================================
-   VERSION MIROIR DES SMS (STYLE CRYPTÉ)
+   MESSAGERIE CRYPTÉE (V.FINALE - FLEX STRUCTURE)
    ============================================================ */
 
 .cryp-fond {
-  width: 270px;
-  background: #050505 !important; /* Fond noir */
-  border: 1px solid #1a1a1a !important; /* Bordure sombre */
-  padding-top: 0px;
-  padding-left: 10px;
+  width: 300px !important;
+  max-width: 95% !important;
+  background: #050505 !important;
+  border: 1px solid #1a1a1a !important;
+  padding: 15px !important;
   border-radius: 5px;
-  margin: auto;
+  margin: 20px auto !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  box-sizing: border-box !important;
+  display: block !important; /* Force le bloc à exister */
 }
 
-.cryp-top {
-  display: grid;
-  grid-template-columns: 50px 200px;
-  grid-template-rows: 45px;
-  width: 300px;
-  align-items: stretch;
-  margin-bottom: -50px; /* TA VALEUR EXACTE pour coller les noms */
+.cryp-item {
+  display: flex !important;
+  align-items: center !important;
+  margin-bottom: 10px !important;
+  height: 40px !important;
+  width: 100% !important;
 }
 
-.cryp-top-l {
-  grid-column: 1/2;
-  grid-row: 1/2;
-  width: 50px;
+.cryp-item:last-child { margin-bottom: 0 !important; }
+
+.cryp-ava-box {
+  position: relative !important;
+  width: 40px !important;
+  height: 40px !important;
+  margin-right: 15px !important;
+  flex-shrink: 0 !important;
 }
 
-.cryp-top-r {
-  grid-column: 2/3;
-  grid-row: 1/2;
-  width: 250px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  text-align: left;
-  /* STYLE CRYPTÉ */
+.cryp-ava-img {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  filter: grayscale(1) brightness(0.7);
+  border: 1px solid #222 !important;
+}
+
+.cryp-online {
+  color: #00ff41 !important;
+  font-size: 10px !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  right: -2px !important;
+  background: #050505 !important;
+  border-radius: 50% !important;
+  border: 2px solid #050505 !important;
+}
+
+.cryp-pseudo {
   font-family: 'Courier New', monospace !important;
   font-size: 12px !important;
   color: #eee !important;
   text-transform: uppercase;
-}
-
-.cryp-top-ava {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 50%;
-  position: relative;
-  z-index: 1;
-  /* EFFET CRYPTÉ */
-  filter: grayscale(1) brightness(0.7);
-  border: 1px solid #222;
-}
-
-.cryp-status {
-  color: #00ff41 !important; /* Vert néon */
-  font-size: 10px;
-  border: 3px solid #050505 !important;
-  margin-left: -12px;
-  margin-top: 27px;
-  border-radius: 50%;
-  position: absolute;
-  z-index: 2;
+  letter-spacing: 1px;
 }
 
 /* LE MESSAGE [C] */
 .mess-crypte {
   background: #050505 !important;
   border: 1px solid #1a1a1a !important;
-  padding: 15px !important;
+  padding: 20px !important;
   font-family: 'Courier New', monospace !important;
   color: #a0a0a0 !important;
   font-size: 13px !important;
-  line-height: 1.5 !important;
   width: 90% !important;
-  max-width: 500px !important;
-  margin: 10px auto !important;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.5) !important;
-  text-align: left !important;
+  max-width: 550px !important;
+  margin: 15px auto !important;
   border-left: 3px solid #333 !important;
+  box-sizing: border-box !important;
+  display: block !important;
 }
