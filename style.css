@@ -1,35 +1,36 @@
 /* ============================================================
    SYSTÈME CRYPTÉ : VERSION LARGE & FINE (ANTI-COMPRESSION)
    ============================================================ */
-
-/* --- LE CONTENEUR NOIR --- */
 .cryp-fond {
   background: #050505 !important;
   border: 1px solid #1a1a1a !important;
-  width: 500px !important; /* Largeur confortable */
-  max-width: 95% !important; /* Sécurité mobile */
-  padding: 8px 15px !important; /* Très peu de padding pour l'effet "fin" */
+  width: 500px !important; 
+  max-width: 95% !important;
+  padding: 10px 15px !important; /* Padding égal en haut et en bas */
   margin: 20px auto !important;
   border-radius: 3px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.8);
   box-sizing: border-box !important;
   display: block !important;
+  overflow: hidden !important; /* Empêche les débordements */
 }
 
-/* --- LE TABLEAU DE STRUCTURE --- */
 .cryp-table {
   width: 100% !important;
   border-collapse: collapse !important;
   border: none !important;
-  table-layout: fixed !important; /* Force le respect des largeurs */
+  table-layout: fixed !important;
+  margin: 0 !important; /* Supprime toute marge auto du tableau */
 }
 
 .cryp-table td {
-  padding: 5px 0 !important;
-  vertical-align: middle !important;
+  padding: 8px 0 !important; /* Un peu plus d'espace interne pour équilibrer */
+  vertical-align: middle !important; /* FORCE l'alignement au milieu vertical */
   border-bottom: 1px solid #111 !important;
-  height: 35px !important; /* Hauteur réduite */
+  height: 40px !important;
+  box-sizing: border-box !important;
 }
+
 
 .cryp-table tr:last-child td {
   border-bottom: none !important;
