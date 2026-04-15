@@ -1,94 +1,112 @@
 /* ============================================================
-   SYSTÈME CRYPTÉ : FIX ABSOLU DÉBORDEMENT
+   STRUCTURE SMS IDENTIQUE - LOOK CRYPTÉ TERMINAL
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
 
+/* --- FOND (Copie conforme .sms-fond + Look) --- */
 .cryp-fond {
-  background: #030303 !important;
-  border: 1px solid #00ff41 !important;
-  width: 500px !important;
-  max-width: 95% !important;
-  padding: 10px 15px !important;
+  width: 270px !important;
+  background: #020202 !important; /* Noir pur */
+  border: 1px solid #00ff41 !important; /* Bordure verte Matrix */
+  padding-top: -5px;
+  padding-left: 10px;
+  border-radius: 2px !important;
   margin: 20px auto !important;
-  border-radius: 2px;
-  box-shadow: 0 0 15px rgba(0, 255, 65, 0.1) !important;
-  box-sizing: border-box !important;
-  display: block !important;
-  line-height: 0 !important;
-  overflow: hidden !important; /* EMPÊCHE TOUT DÉBORDEMENT */
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.2) !important;
+  position: relative;
+  overflow: hidden;
 }
 
-.cryp-fond br { display: none !important; }
-
-.cryp-table {
-  width: 100% !important;
-  border-collapse: collapse !important;
-  table-layout: fixed !important; /* FORCE LES COLONNES À RESPECTER LES % */
-  margin: 0 !important;
-  line-height: normal !important;
+/* Effet Scanline discret sur le fond */
+.cryp-fond::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: repeating-linear-gradient(0deg, rgba(0, 255, 65, 0.03) 0px, rgba(0, 255, 65, 0.03) 1px, transparent 1px, transparent 2px);
+  pointer-events: none;
 }
 
-.cryp-table td {
-  padding: 5px 0 !important;
-  vertical-align: middle !important;
-  border-bottom: 1px solid rgba(0, 255, 65, 0.1) !important;
-  height: 45px !important;
-  overflow: hidden !important;
+/* --- STRUCTURE (Copie conforme .sms-top) --- */
+.cryp-top {
+  display: grid !important;
+  grid-template-columns: 50px 200px !important;
+  grid-template-rows: 45px !important;
+  width: 300px !important;
+  align-items: stretch !important;
+  margin-bottom: -50px !important; /* On garde ta marge négative */
 }
 
-.cryp-table tr:last-child td { border-bottom: none !important; }
-
-/* FIX AVATAR ÉNORME */
-.cryp-ava-img {
-  /* On force les dimensions au pixel près avec !important partout */
-  width: 30px !important;
-  height: 30px !important;
-  min-width: 30px !important;
-  max-width: 30px !important;
-  min-height: 30px !important;
-  max-height: 30px !important;
-  
-  border-radius: 50% !important;
-  border: 1px solid #00ff41 !important;
-  display: block !important;
-  margin: 0 auto !important;
-  object-fit: cover !important;
-  filter: grayscale(0.8) !important;
+.cryp-top-l {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  width: 50px;
 }
 
-.cryp-pseudo {
-  font-family: 'Fira Code', monospace !important;
+.cryp-top-r {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  width: 250px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  /* STYLE CRYPTÉ */
+  font-family: 'Fira Code', 'Courier New', monospace !important;
   font-size: 11px !important;
-  color: #00ff41 !important;
+  color: #00ff41 !important; /* Texte Vert Terminal */
   text-transform: uppercase;
-  padding-left: 10px !important;
   letter-spacing: 1px;
-  /* Sécurité si le pseudo est trop long */
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
+  text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
 }
 
-.cryp-node {
-  text-align: right;
-  font-family: 'Fira Code', monospace;
-  font-size: 8px !important;
-  color: #004411 !important;
-  letter-spacing: 1px;
+/* --- AVATAR (Copie conforme .sms-top-ava + Look) --- */
+.cryp-top-ava {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  max-width: 40px !important;
+  object-fit: cover;
+  border-radius: 50% !important;
+  position: relative;
+  z-index: 1;
+  border: 1px solid #00ff41 !important;
+  filter: grayscale(1) brightness(0.8);
 }
 
-/* LE MESSAGE [C] */
+/* --- CERCLE STATUT (Copie conforme .fa-circle + Look) --- */
+.cryp-circle {
+  color: #00ff41 !important;
+  font-size: 10px !important;
+  border: 3px solid #020202 !important;
+  margin-left: -12px !important;
+  margin-top: 27px !important;
+  border-radius: 50% !important;
+  position: absolute !important;
+  z-index: 2;
+  box-shadow: 0 0 5px #00ff41;
+}
+
+/* --- SPACER POUR LE FOND (Indispensable avec ta marge négative) --- */
+.cryp-spacer {
+  height: 60px !important;
+  display: block !important;
+}
+
+/* --- MESSAGE CRYPTÉ [C] --- */
 .mess-crypte {
-  background: #030303 !important;
+  background: #020202 !important;
   border: 1px solid #1a1a1a !important;
   border-left: 3px solid #00ff41 !important;
-  padding: 20px !important;
+  padding: 15px !important;
   font-family: 'Fira Code', monospace !important;
   color: #00ff41 !important;
-  font-size: 13px !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
   width: 85% !important;
+  max-width: 500px !important;
   margin: 15px auto !important;
   display: block !important;
   box-sizing: border-box !important;
+  box-shadow: inset 0 0 10px rgba(0, 255, 65, 0.05);
 }
