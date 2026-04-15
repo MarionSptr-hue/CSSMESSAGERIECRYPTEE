@@ -1,49 +1,261 @@
-/* ============================================================
-   STRUCTURE SMS IDENTIQUE - LOOK CRYPTÉ TERMINAL
-   ============================================================ */
+/* ============================================
+   ENCRYPTED MESSAGING SKIN
+   Structure identique à l'original
+   ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;600&display=swap');
 
-/* --- FOND (Copie conforme .sms-fond + Look) --- */
-.cryp-fond {
-  width: 270px !important;
-  background: #020202 !important; /* Noir pur */
-  border: 1px solid #00ff41 !important; /* Bordure verte Matrix */
-  padding-top: -5px;
+/* Variables spécifiques à ce thème */
+:root {
+  --enc-bg:       #0a0e0d;
+  --enc-surface:  #0f1610;
+  --enc-deep:     #080c09;
+  --enc-border:   1px solid #1f3d2a;
+  --enc-glow:     #00ff88;
+  --enc-muted:    #3a6b4a;
+  --enc-text:     #b0ffc8;
+  --enc-accent:   #00e57a;
+  --enc-danger:   #ff4466;
+  --enc-mono:     'Share Tech Mono', monospace;
+  --enc-title:    'Orbitron', monospace;
+  --enc-shadow:   0 0 12px rgba(0,255,136,0.06), 0 2px 8px rgba(0,0,0,0.8);
+  --enc-transi:   all .2s ease;
+  --enc-radius:   3px;
+}
+
+/*** LISTE DES BLOGS — structure identique ***/
+.enc-bloglist {
+  background: var(--enc-surface);
+  display: grid;
+  grid-template-columns: 700px auto;
+  grid-template-rows: 100px auto;
+  margin-bottom: 0;
+  box-shadow: var(--enc-shadow);
+  border-left: 2px solid var(--enc-accent);
+  position: relative;
+}
+
+.enc-bloglist::before {
+  content: 'ENC ///';
+  font-family: var(--enc-mono);
+  font-size: 9px;
+  color: var(--enc-muted);
+  letter-spacing: 2px;
+  position: absolute;
+  top: 4px;
+  right: 8px;
+}
+
+.enc-bloglist_ava img {
+  float: right;
+  background: var(--enc-deep);
+  width: 40px;
+  height: 40px;
+  margin-left: 5px;
+  margin-right: 10px;
+  object-fit: cover;
+  object-position: center;
+  opacity: .7;
+  transition: var(--enc-transi);
+  filter: grayscale(1) brightness(.8) sepia(.3) hue-rotate(90deg);
+  border: 1px solid var(--enc-muted);
+  border-radius: var(--enc-radius);
+}
+.enc-bloglist_ava img:hover {
+  opacity: 1;
+  filter: grayscale(0) brightness(1);
+  border-color: var(--enc-accent);
+}
+
+.enc-bloglist_infos,
+.enc-bloglist_infos2 {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.enc-bloglist-description {
+  width: 100%;
+  font-family: var(--enc-mono);
+  font-size: .85em;
+  font-style: normal;
+  margin-left: 35px;
+  margin-top: 5px;
+  opacity: .7;
+  color: var(--enc-muted);
+  letter-spacing: .5px;
+}
+.enc-bloglist-description::before {
+  content: '> ';
+  color: var(--enc-accent);
+}
+
+.enc-bloglist_details {
+  text-align: right;
+  font-family: var(--enc-mono);
+  font-weight: 600;
+  margin-right: 5px;
+  width: 150px;
+  color: var(--enc-text);
+}
+.enc-bloglist_details l {
+  color: var(--enc-accent);
+  font-size: .95em;
+}
+
+.enc-bloglist-crea   { width: 500px; }
+.enc-bloglist-lastpost { width: 200px; }
+
+
+/*** AFFICHAGE D'UN BLOG — structure identique ***/
+.enc-blog_post {
+  background: var(--enc-surface);
+  display: grid;
+  grid-template-rows: auto auto;
+  box-shadow: var(--enc-shadow);
+  border-top: 1px solid var(--enc-muted);
+}
+
+.enc-blog_details {
+  padding: 10px;
+  display: inline-block;
+  align-items: right;
+}
+
+.enc-blog_details img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(1) sepia(.2) hue-rotate(90deg);
+  border: var(--enc-border);
+  border-radius: var(--enc-radius);
+}
+
+/* Avatar principal rond */
+.enc-sms-crea img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  margin-top: 10px;
+  border: 2px solid var(--enc-muted);
+  transition: var(--enc-transi);
+  filter: grayscale(1) sepia(.2) hue-rotate(90deg);
+}
+.enc-sms-crea img:hover {
+  border-radius: var(--enc-radius);
+  border-color: var(--enc-accent);
+  filter: grayscale(0);
+}
+
+/* Grille principale — identique à .sms-first */
+.enc-sms-first {
+  display: grid;
+  grid-template-columns: 200px auto;
+  grid-template-rows: auto;
+  margin: auto;
+  align-items: stretch;
+}
+
+.enc-sms-first-left {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  width: 200px;
+  text-align: center;
+  margin-left: -70px;
+  margin-bottom: 20px;
+}
+
+.enc-sms-first-right {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  width: auto;
+  height: auto;
+  display: flex;
+  margin-left: -70px;
+  box-shadow: none;
+}
+
+.enc-blog_author { flex-grow: 100; }
+
+.enc-post_message {
+  padding: 15px;
+  box-shadow: none;
+  font-family: var(--enc-mono);
+  color: var(--enc-text);
+  font-size: .9em;
+  line-height: 1.7;
+}
+
+
+/*** BLOC PARTICIPANTS — structure identique à .sms-fond ***/
+.enc-sms-fond {
+  width: 270px;
+  background: var(--enc-deep);
+  border: 1px solid var(--enc-muted);
+  padding-top: 0;
   padding-left: 10px;
-  border-radius: 2px !important;
-  margin: 20px auto !important;
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.2) !important;
+  border-radius: var(--enc-radius);
   position: relative;
   overflow: hidden;
 }
 
-/* Effet Scanline discret sur le fond */
-.cryp-fond::after {
-  content: "";
+/* Ligne de scan décorative */
+.enc-sms-fond::after {
+  content: '';
+  display: block;
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: repeating-linear-gradient(0deg, rgba(0, 255, 65, 0.03) 0px, rgba(0, 255, 65, 0.03) 1px, transparent 1px, transparent 2px);
-  pointer-events: none;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--enc-accent), transparent);
+  opacity: .5;
+  animation: enc-scan 3s linear infinite;
 }
 
-/* --- STRUCTURE (Copie conforme .sms-top) --- */
-.cryp-top {
-  display: grid !important;
-  grid-template-columns: 50px 200px !important;
-  grid-template-rows: 45px !important;
-  width: 300px !important;
-  align-items: stretch !important;
-  margin-bottom: -50px !important; /* On garde ta marge négative */
+@keyframes enc-scan {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
-.cryp-top-l {
+/* En-tête participants */
+.enc-sms-fond > center > an,
+.enc-sms-fond > an {
+  display: block;
+  font-family: var(--enc-mono);
+  font-size: .7em;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--enc-muted);
+  padding: 6px 0 4px;
+}
+.enc-sms-fond > center > an::before {
+  content: '[ ';
+  color: var(--enc-accent);
+}
+.enc-sms-fond > center > an::after {
+  content: ' ]';
+  color: var(--enc-accent);
+}
+
+/* Grille participant — identique à .sms-top */
+.enc-sms-top {
+  display: grid;
+  grid-template-columns: 50px 200px;
+  grid-template-rows: 45px;
+  width: 300px;
+  align-items: stretch;
+  margin-bottom: -50px;
+}
+
+.enc-sms-top-l {
   grid-column: 1/2;
   grid-row: 1/2;
   width: 50px;
 }
 
-.cryp-top-r {
+.enc-sms-top-r {
   grid-column: 2/3;
   grid-row: 1/2;
   width: 250px;
@@ -51,62 +263,178 @@
   display: flex;
   align-items: center;
   text-align: left;
-  /* STYLE CRYPTÉ */
-  font-family: 'Fira Code', 'Courier New', monospace !important;
-  font-size: 11px !important;
-  color: #00ff41 !important; /* Texte Vert Terminal */
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+  font-family: var(--enc-mono);
+  font-size: .85em;
+  color: var(--enc-text);
+  letter-spacing: .5px;
+}
+.enc-sms-top-r::before {
+  content: '@ ';
+  color: var(--enc-accent);
+  margin-right: 2px;
 }
 
-/* --- AVATAR (Copie conforme .sms-top-ava + Look) --- */
-.cryp-top-ava {
-  width: 40px !important;
-  height: 40px !important;
-  min-width: 40px !important;
-  max-width: 40px !important;
+.enc-sms-top-ava {
+  width: 40px;
+  height: 40px;
   object-fit: cover;
-  border-radius: 50% !important;
+  object-position: center;
+  border-radius: 50%;
   position: relative;
   z-index: 1;
-  border: 1px solid #00ff41 !important;
-  filter: grayscale(1) brightness(0.8);
+  filter: grayscale(1) sepia(.2) hue-rotate(100deg);
+  border: 1px solid var(--enc-muted);
 }
 
-/* --- CERCLE STATUT (Copie conforme .fa-circle + Look) --- */
-.cryp-circle {
-  color: #00ff41 !important;
-  font-size: 10px !important;
-  border: 3px solid #020202 !important;
-  margin-left: -12px !important;
-  margin-top: 27px !important;
-  border-radius: 50% !important;
-  position: absolute !important;
+/* Indicateur "en ligne" — identique à .fa-circle */
+.enc-online-dot {
+  color: var(--enc-accent);
+  font-size: 10px;
+  border: 3px solid var(--enc-deep);
+  margin-left: -12px;
+  margin-top: 27px;
+  border-radius: 50%;
+  position: absolute;
   z-index: 2;
-  box-shadow: 0 0 5px #00ff41;
+  box-shadow: 0 0 4px var(--enc-accent);
 }
 
-/* --- SPACER POUR LE FOND (Indispensable avec ta marge négative) --- */
-.cryp-spacer {
-  height: 60px !important;
-  display: block !important;
+
+/*** COMMENTAIRES — structure identique ***/
+.enc-wrapped-sms {
+  width: 100%;
+  margin: 10px auto;
+  clear: both;
+  background: var(--enc-bg);
+  align-items: center;
+  box-shadow: var(--enc-shadow);
 }
 
-/* --- MESSAGE CRYPTÉ [C] --- */
-.mess-crypte {
-  background: #020202 !important;
-  border: 1px solid #1a1a1a !important;
-  border-left: 3px solid #00ff41 !important;
-  padding: 15px !important;
-  font-family: 'Fira Code', monospace !important;
-  color: #00ff41 !important;
-  font-size: 12px !important;
-  line-height: 1.5 !important;
-  width: 85% !important;
-  max-width: 500px !important;
-  margin: 15px auto !important;
-  display: block !important;
-  box-sizing: border-box !important;
-  box-shadow: inset 0 0 10px rgba(0, 255, 65, 0.05);
+/* Grille message — identique à .sms-box */
+.enc-sms-box {
+  display: grid;
+  grid-template-columns: 145px 370px;
+  grid-template-rows: 100%;
+  align-items: start;
+  width: 520px;
+  border-bottom: 1px solid var(--enc-muted);
+  margin-bottom: 15px;
+}
+
+.enc-sms-left {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  width: 145px;
+}
+
+.enc-sms-pseudo {
+  text-transform: uppercase;
+  font-family: var(--enc-mono);
+  font-size: .8em;
+  color: var(--enc-accent);
+  letter-spacing: 1px;
+}
+.enc-sms-pseudo::before {
+  content: '// ';
+  opacity: .5;
+}
+
+.enc-sms-left img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--enc-radius);
+  margin-top: 36px;
+  margin-left: 10px;
+  border: 1px solid var(--enc-muted);
+  filter: grayscale(1) sepia(.2) hue-rotate(100deg);
+  transition: var(--enc-transi);
+}
+.enc-sms-left img:hover {
+  filter: none;
+  border-color: var(--enc-accent);
+}
+
+.enc-sms-right {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  width: 370px;
+  margin-left: -10px;
+  margin-top: -9px;
+}
+.enc-sms-right::before {
+  content: "◀";
+  float: left;
+  font-size: 1.1em;
+  color: var(--enc-muted);
+  margin: 50px 0 0 10px;
+}
+
+.enc-sms-edit {
+  display: inline-block;
+  float: right;
+  margin-right: 18px;
+  font-family: var(--enc-mono);
+  font-size: .75em;
+  color: var(--enc-muted);
+}
+
+/* En-tête du message */
+.enc-sms-mess-top {
+  width: 90%;
+  margin: auto;
+  text-align: left;
+  background: var(--enc-deep);
+  padding: 5px 5px 5px 10px;
+  border-radius: var(--enc-radius) var(--enc-radius) 0 0;
+  border: 1px solid var(--enc-muted);
+  border-bottom: none;
+  font-family: var(--enc-mono);
+  font-size: .8em;
+  color: var(--enc-muted);
+  letter-spacing: .5px;
+}
+.enc-sms-mess-top::before {
+  content: 'MSG ▸ ';
+  color: var(--enc-accent);
+  font-size: .9em;
+}
+
+/* Corps du message */
+.enc-sms-mess-bottom {
+  width: 90%;
+  margin: auto;
+  margin-top: 0;
+  text-align: left;
+  background: var(--enc-surface);
+  padding: 15px;
+  border: 1px solid var(--enc-muted);
+  border-radius: 0 0 var(--enc-radius) var(--enc-radius);
+  font-family: var(--enc-mono);
+  font-size: .9em;
+  color: var(--enc-text);
+  line-height: 1.7;
+}
+
+.enc-sms-date {
+  text-align: right !important;
+  margin-right: 18px;
+  margin-bottom: 5px;
+  font-family: var(--enc-mono);
+  font-size: .75em;
+  color: var(--enc-muted);
+  letter-spacing: .5px;
+}
+.enc-sms-date::before {
+  content: '⧖ ';
+  color: var(--enc-accent);
+  font-size: 11px;
+}
+
+.enc-sms-mess-bottom img {
+  max-width: 100%;
+  object-fit: cover;
+  border: 1px solid var(--enc-muted);
+  border-radius: var(--enc-radius);
 }
