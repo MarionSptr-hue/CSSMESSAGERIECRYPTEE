@@ -1,11 +1,22 @@
 /* ===== CONTAINER ===== */
 .crypt-box {
-  background: #2b2b2b;
+  background: linear-gradient(145deg, #2b2b2b, #262626);
   border: 1px solid #3a3a3a;
-  border-radius: 12px;
-  padding: 15px;
-  color: #d1d1d1;
+  border-radius: 14px;
+  padding: 18px;
+  color: #d6d6d6;
   font-family: "Courier New", monospace;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+/* léger effet grain / profondeur */
+.crypt-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 10%, rgba(255,255,255,0.03), transparent 40%);
+  pointer-events: none;
 }
 
 /* ===== HEADER ===== */
@@ -13,38 +24,56 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  font-size: 13px;
   text-transform: lowercase;
   border-bottom: 1px solid #3a3a3a;
-  padding-bottom: 10px;
+  padding-bottom: 12px;
+  color: #cfcfcf;
 }
 
 .crypt-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   background: #bfbfbf;
   border-radius: 50%;
   display: inline-block;
   margin-right: 10px;
+  opacity: 0.8;
 }
 
 .crypt-algo {
   border: 1px solid #555;
-  padding: 2px 8px;
-  border-radius: 6px;
+  padding: 3px 10px;
+  border-radius: 8px;
   font-size: 10px;
+  letter-spacing: 2px;
+  opacity: 0.7;
 }
 
 /* ===== PARTICIPANTS ===== */
 .crypt-participants {
-  margin-top: 15px;
-  font-size: 13px;
+  margin-top: 18px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.crypt-participants > div:first-child {
+  font-style: italic;
+  opacity: 0.5;
+  margin-bottom: 8px;
 }
 
 .crypt-user {
   display: flex;
   justify-content: space-between;
-  margin-top: 8px;
+  align-items: center;
+  margin-top: 10px;
+  padding: 6px 0;
+}
+
+.crypt-user span:first-child {
+  letter-spacing: 1px;
 }
 
 .crypt-status {
@@ -52,34 +81,50 @@
   height: 6px;
   background: #bfbfbf;
   border-radius: 50%;
+  opacity: 0.6;
 }
 
 /* ===== SEPARATOR ===== */
 .crypt-separator {
-  margin-top: 15px;
+  margin-top: 20px;
   text-align: center;
-  font-size: 12px;
-  opacity: 0.6;
+  font-size: 11px;
+  letter-spacing: 2px;
+  opacity: 0.4;
   border-top: 1px solid #3a3a3a;
-  padding-top: 10px;
+  padding-top: 12px;
 }
 
 /* ===== MESSAGES ===== */
-.post:has(.crypt-box) + .post .postbody {
-  background: #2f2f2f;
+.crypt-msg {
+  background: linear-gradient(145deg, #303030, #2a2a2a);
   border: 1px solid #3a3a3a;
-  border-radius: 10px;
-  padding: 10px;
+  border-radius: 12px;
+  padding: 12px;
   font-family: "Courier New", monospace;
-  color: #e5e5e5;
+  color: #e8e8e8;
+  margin-top: 12px;
   position: relative;
+  transition: 0.2s ease;
 }
 
-/* pseudo + heure */
-.post:has(.crypt-box) + .post .postbody::before {
-  content: attr(data-author) "    " attr(data-time);
-  display: block;
+/* petit effet hover subtil */
+.crypt-msg:hover {
+  border-color: #555;
+}
+
+.crypt-meta {
+  display: flex;
+  justify-content: space-between;
   font-size: 11px;
   opacity: 0.5;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+}
+
+.crypt-status-line {
+  font-size: 10px;
+  opacity: 0.4;
+  margin-top: 6px;
+  letter-spacing: 1px;
 }
