@@ -1,114 +1,99 @@
-/* --- MESSAGERIE CRYPTÉE DARKNET --- */
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
+/* ============================================================
+   MESSAGERIE CRYPTÉE (BASÉE SUR TA STRUCTURE SMS)
+   ============================================================ */
 
+/* --- LE FOND DU BLOC PARTICIPANTS --- */
+.cryp-fond {
+  width: 270px;
+  background: #050505 !important; /* Noir profond */
+  border: 1px solid #1a1a1a !important;
+  padding: 10px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  margin: auto;
+}
+
+/* --- LA LIGNE D'UN PARTICIPANT --- */
+.cryp-top {
+  display: grid;
+  grid-template-columns: 50px 200px;
+  grid-template-rows: 45px;
+  width: 250px;
+  align-items: center;
+  margin-bottom: 5px !important; /* On annule le -50px ici pour que ce soit propre */
+}
+
+.cryp-top-l {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  width: 50px;
+}
+
+.cryp-top-r {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  width: 200px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 11px;
+  color: #eee !important;
+  text-transform: uppercase;
+}
+
+.cryp-top-ava {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+  filter: grayscale(1) brightness(0.7);
+  border: 1px solid #333;
+}
+
+/* Le petit point de statut */
+.cryp-status {
+  color: #00ff41; /* Vert Matrix */
+  font-size: 8px;
+  border: 2px solid #050505;
+  margin-left: -10px;
+  margin-top: 28px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 2;
+}
+
+/* --- LE MESSAGE CRYPTÉ (RÉPONSE [C]) --- */
 .mess-crypte {
-    background-color: #030303 !important;
-    /* Effet de scanlines (lignes de terminal) */
-    background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-                      linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03)) !important;
-    background-size: 100% 3px, 3px 100% !important;
-    
-    border: 1px solid #1a1a1a !important;
-    border-left: 3px solid #333 !important; /* Barre latérale de rappel */
-    
-    color: #a0a0a0 !important;
-    font-family: 'Fira Code', 'Courier New', monospace !important;
-    font-size: 13px !important;
-    padding: 35px 25px 25px 25px !important;
-    margin: 20px auto !important;
-    width: 85% !important;
-    max-width: 650px !important;
-    border-radius: 2px !important;
-    position: relative !important;
-    text-align: left !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+  background: #050505 !important;
+  border: 1px solid #1a1a1a !important;
+  border-left: 3px solid #333 !important;
+  padding: 20px !important;
+  color: #b0b0b0 !important;
+  font-family: 'Fira Code', 'Courier New', monospace !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+  width: 90% !important;
+  max-width: 550px !important;
+  margin: 15px auto !important;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.8) !important;
+  border-radius: 3px !important;
+  position: relative !important;
+  text-align: left !important;
 }
 
-/* En-tête technique avec icône de verrou */
-.mess-crypte::before {
-    content: "🔒 SECURE_CONNECTION_STATION // ID:098-X";
-    position: absolute;
-    top: 0; left: 0; width: 100%;
-    background: #0a0a0a;
-    color: #444;
-    font-size: 9px;
-    padding: 8px 15px;
-    border-bottom: 1px solid #1a1a1a;
-    letter-spacing: 2px;
-    box-sizing: border-box;
-}
-
-/* Accentuation des noms et des commandes */
-.mess-crypte b, .mess-crypte strong {
-    color: #e0e0e0 !important;
-    font-weight: 600;
-}
-
-/* --- ENTÊTE ÉLARGIE ET FIXÉE --- */
-/* --- ENTÊTE RESPONSIVE ET ÉLARGIE --- */
-.cryp-head-container {
-    background: #050505 !important;
-    border: 1px solid #1a1a1a !important;
-    
-    /* On définit une largeur idéale */
-    width: 350px !important; 
-    /* MAIS on lui dit de ne jamais dépasser 90% de la largeur de l'écran */
-    max-width: 90% !important; 
-    
-    margin: 20px auto !important; 
-    display: block !important; /* Retour au block pour le responsive */
-    padding: 15px 20px !important;
-    border-radius: 2px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.6);
-    box-sizing: border-box !important;
-}
-
-/* On s'assure que les pseudos ne cassent pas tout sur mobile */
-.cryp-participant span {
-    font-family: 'Fira Code', monospace !important;
-    font-size: 11px !important;
-    color: #999 !important;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    
-    /* Si le pseudo est trop long sur petit écran, on met des points de suspension */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap !important; 
-}
-
-.cryp-participant {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    height: 40px !important; /* Un peu plus d'espace vertical pour souffler */
-    border-bottom: 1px solid #111;
-    width: 100% !important;
-}
-
-.cryp-participant img {
-    width: 30px !important;
-    height: 30px !important;
-    margin-right: 15px !important;
-    border: 1px solid #222;
-    filter: grayscale(1) brightness(0.8);
-    flex-shrink: 0 !important; /* Empêche l'image de s'écraser */
-}
-
-.cryp-participant span {
-    font-family: 'Fira Code', monospace !important;
-    font-size: 11px !important;
-    color: #999 !important;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    white-space: nowrap !important; /* Empêche le pseudo de revenir à la ligne */
-}
-
-.cryp-status-line {
-    font-size: 8px;
-    color: #222;
-    text-align: center;
-    margin-top: 10px;
-    letter-spacing: 3px;
-    font-family: 'Fira Code', monospace;
+/* Petit header technique sur le message */
+.mess-crypte:before {
+  content: ">> ENCRYPTED_DATA_STREAM";
+  display: block;
+  font-size: 9px;
+  color: #444;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  border-bottom: 1px solid #111;
 }
