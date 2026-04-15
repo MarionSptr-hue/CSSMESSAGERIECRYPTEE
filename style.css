@@ -15,6 +15,10 @@
   overflow: hidden !important; /* Empêche les débordements */
 }
 
+.cryp-fond br {
+  display: none !important;
+}
+
 .cryp-table {
   width: 100% !important;
   border-collapse: collapse !important;
