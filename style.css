@@ -44,43 +44,57 @@
     font-weight: 600;
 }
 
-/* --- DESIGN DE L'ENTÊTE (PARTICIPANTS) --- */
+/* --- ENTÊTE ÉLARGIE ET FIXÉE --- */
 .cryp-head-container {
     background: #050505 !important;
     border: 1px solid #1a1a1a !important;
-    width: 230px !important;
-    margin: 20px auto !important;
-    padding: 10px !important;
-    border-radius: 0px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    
+    /* On élargit ici */
+    width: 350px !important; 
+    max-width: 95% !important; /* Sécurité mobile */
+    
+    /* On force le centrage sans compression */
+    margin: 20px auto !important; 
+    display: table !important; /* "table" aide souvent à garder la largeur propre sur Forumactif */
+    
+    padding: 15px 20px !important;
+    border-radius: 2px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+    box-sizing: border-box !important;
 }
 
 .cryp-participant {
     display: flex !important;
+    flex-direction: row !important;
     align-items: center !important;
-    height: 35px !important;
+    height: 40px !important; /* Un peu plus d'espace vertical pour souffler */
     border-bottom: 1px solid #111;
+    width: 100% !important;
 }
 
 .cryp-participant img {
-    width: 28px !important;
-    height: 28px !important;
-    margin-right: 12px !important;
+    width: 30px !important;
+    height: 30px !important;
+    margin-right: 15px !important;
     border: 1px solid #222;
     filter: grayscale(1) brightness(0.8);
+    flex-shrink: 0 !important; /* Empêche l'image de s'écraser */
 }
 
 .cryp-participant span {
     font-family: 'Fira Code', monospace !important;
-    font-size: 10px !important;
-    color: #777 !important;
+    font-size: 11px !important;
+    color: #999 !important;
     text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap !important; /* Empêche le pseudo de revenir à la ligne */
 }
 
 .cryp-status-line {
-    font-size: 7px;
+    font-size: 8px;
     color: #222;
     text-align: center;
-    margin-top: 8px;
-    letter-spacing: 2px;
+    margin-top: 10px;
+    letter-spacing: 3px;
+    font-family: 'Fira Code', monospace;
 }
