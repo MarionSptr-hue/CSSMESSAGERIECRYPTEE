@@ -1,27 +1,24 @@
 /* ============================================================
-   MESSAGERIE CRYPTÉE (BASÉE SUR TA STRUCTURE SMS)
+   VERSION MIROIR DES SMS (STYLE CRYPTÉ)
    ============================================================ */
 
-/* --- LE FOND DU BLOC PARTICIPANTS --- */
 .cryp-fond {
   width: 270px;
-  background: #050505 !important; /* Noir profond */
-  border: 1px solid #1a1a1a !important;
-  padding: 10px;
-  padding-bottom: 5px;
+  background: #050505 !important; /* Fond noir */
+  border: 1px solid #1a1a1a !important; /* Bordure sombre */
+  padding-top: 0px;
+  padding-left: 10px;
   border-radius: 5px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
   margin: auto;
 }
 
-/* --- LA LIGNE D'UN PARTICIPANT --- */
 .cryp-top {
   display: grid;
   grid-template-columns: 50px 200px;
   grid-template-rows: 45px;
-  width: 250px;
-  align-items: center;
-  margin-bottom: 5px !important; /* On annule le -50px ici pour que ce soit propre */
+  width: 300px;
+  align-items: stretch;
+  margin-bottom: -50px; /* TA VALEUR EXACTE pour coller les noms */
 }
 
 .cryp-top-l {
@@ -33,13 +30,14 @@
 .cryp-top-r {
   grid-column: 2/3;
   grid-row: 1/2;
-  width: 200px;
+  width: 250px;
   height: 40px;
   display: flex;
   align-items: center;
   text-align: left;
-  font-family: 'Fira Code', 'Courier New', monospace;
-  font-size: 11px;
+  /* STYLE CRYPTÉ */
+  font-family: 'Courier New', monospace !important;
+  font-size: 12px !important;
   color: #eee !important;
   text-transform: uppercase;
 }
@@ -52,48 +50,35 @@
   border-radius: 50%;
   position: relative;
   z-index: 1;
+  /* EFFET CRYPTÉ */
   filter: grayscale(1) brightness(0.7);
-  border: 1px solid #333;
+  border: 1px solid #222;
 }
 
-/* Le petit point de statut */
 .cryp-status {
-  color: #00ff41; /* Vert Matrix */
-  font-size: 8px;
-  border: 2px solid #050505;
-  margin-left: -10px;
-  margin-top: 28px;
+  color: #00ff41 !important; /* Vert néon */
+  font-size: 10px;
+  border: 3px solid #050505 !important;
+  margin-left: -12px;
+  margin-top: 27px;
   border-radius: 50%;
   position: absolute;
   z-index: 2;
 }
 
-/* --- LE MESSAGE CRYPTÉ (RÉPONSE [C]) --- */
+/* LE MESSAGE [C] */
 .mess-crypte {
   background: #050505 !important;
   border: 1px solid #1a1a1a !important;
-  border-left: 3px solid #333 !important;
-  padding: 20px !important;
-  color: #b0b0b0 !important;
-  font-family: 'Fira Code', 'Courier New', monospace !important;
+  padding: 15px !important;
+  font-family: 'Courier New', monospace !important;
+  color: #a0a0a0 !important;
   font-size: 13px !important;
-  line-height: 1.6 !important;
+  line-height: 1.5 !important;
   width: 90% !important;
-  max-width: 550px !important;
-  margin: 15px auto !important;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.8) !important;
-  border-radius: 3px !important;
-  position: relative !important;
+  max-width: 500px !important;
+  margin: 10px auto !important;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5) !important;
   text-align: left !important;
-}
-
-/* Petit header technique sur le message */
-.mess-crypte:before {
-  content: ">> ENCRYPTED_DATA_STREAM";
-  display: block;
-  font-size: 9px;
-  color: #444;
-  margin-bottom: 10px;
-  letter-spacing: 2px;
-  border-bottom: 1px solid #111;
+  border-left: 3px solid #333 !important;
 }
