@@ -1,17 +1,34 @@
+.secure-card,
+.secure-card div,
+.secure-card span,
+.secure-card table,
+.secure-card tbody,
+.secure-card tr,
+.secure-card td,
+.secure-card img {
+  margin: 0 !important;
+  border-spacing: 0 !important;
+  box-sizing: border-box;
+  line-height: 1.2;
+}
+
+.secure-card table {
+  border-collapse: collapse !important;
+}
+
+.secure-card img {
+  display: block !important;
+}
+
 .secure-card {
   width: 100%;
   max-width: 400px;
-  margin: auto;
-  box-sizing: border-box;
+  margin: auto !important;
   overflow: hidden;
   background: #080c09;
   border: 1px solid #1f3d2a;
   font-family: 'Share Tech Mono', Courier, monospace;
   line-height: 1.2;
-}
-
-.secure-card * {
-  box-sizing: border-box;
 }
 
 .secure-card__topbar {
@@ -60,7 +77,7 @@
 
 .secure-card__line {
   font-size: 9px;
-  margin-bottom: 3px;
+  margin-bottom: 3px !important;
 }
 
 .secure-card__line--dim {
@@ -76,16 +93,17 @@
 }
 
 .secure-card__separator {
-  margin: 8px 0;
+  margin: 8px 0 !important;
   border-top: 1px solid #1a3325;
+  height: 0;
 }
 
 .secure-card__separator--bottom {
-  margin: 10px 0 4px;
+  margin: 10px 0 4px !important;
 }
 
 .secure-card__section-title {
-  margin-bottom: 10px;
+  margin-bottom: 10px !important;
   padding-bottom: 4px;
   border-bottom: 1px solid #1a3325;
   color: #1f5c30;
@@ -96,23 +114,25 @@
 
 .secure-card__table {
   width: 100%;
-  margin: 0;
-  padding: 0;
-  border: none;
-  border-collapse: collapse;
   table-layout: fixed;
+  border: none !important;
+}
+
+.secure-card__table tr {
+  line-height: 0 !important;
 }
 
 .secure-card__cell {
   width: 50%;
-  padding: 0;
+  padding: 0 !important;
   vertical-align: middle;
+  line-height: 1.2 !important;
 }
 
 .secure-card__user {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .secure-card__avatar-wrap {
@@ -121,12 +141,14 @@
   width: 30px;
   height: 30px;
   min-width: 30px;
+  line-height: 0 !important;
 }
 
 .secure-card__avatar {
-  display: block;
-  width: 30px;
-  height: 30px;
+  width: 30px !important;
+  height: 30px !important;
+  max-width: 30px !important;
+  max-height: 30px !important;
   border: 1px solid #1f5c30;
   border-radius: 50%;
   object-fit: cover;
@@ -153,17 +175,17 @@
   overflow: hidden;
   color: #b0ffc8;
   font-size: 10px;
-  line-height: 1.2;
   white-space: nowrap;
   text-overflow: ellipsis;
+  line-height: 1.2 !important;
 }
 
 .secure-card__state {
-  margin-top: 2px;
+  margin-top: 2px !important;
   color: #1f5c30;
   font-size: 7px;
-  line-height: 1.2;
   white-space: nowrap;
+  line-height: 1.2 !important;
 }
 
 .secure-card__footer {
