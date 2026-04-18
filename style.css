@@ -152,7 +152,7 @@
   border: 1px solid #1f5c30;
   border-radius: 50%;
   object-fit: cover;
-  filter: grayscale(1) brightness(.8);
+  /*filter: grayscale(1) brightness(.8);*/
 }
 
 .secure-card__status {
